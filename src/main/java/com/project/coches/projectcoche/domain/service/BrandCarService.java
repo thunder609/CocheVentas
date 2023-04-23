@@ -2,6 +2,7 @@ package com.project.coches.projectcoche.domain.service;
 
 import com.project.coches.projectcoche.domain.dto.BrandCarDto;
 import com.project.coches.projectcoche.domain.repository.IBrandCarRepository;
+import com.project.coches.projectcoche.domain.useCase.IBrandCarServiceUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-public class BrandCarService implements IBrandCarService {
+public class BrandCarService implements IBrandCarServiceUseCase {
     private final IBrandCarRepository iBrandCarRepository;
     @Override
     public List<BrandCarDto> getAll() {

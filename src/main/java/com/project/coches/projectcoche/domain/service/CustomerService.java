@@ -1,8 +1,10 @@
 package com.project.coches.projectcoche.domain.service;
 
+import com.project.coches.projectcoche.Exeption.EmailValidatorExeption;
 import com.project.coches.projectcoche.domain.dto.CustomerDto;
 import com.project.coches.projectcoche.domain.dto.ResposeCustomerDto;
 import com.project.coches.projectcoche.domain.repository.ICustomerRepository;
+import com.project.coches.projectcoche.domain.useCase.ICustomerServiceUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,7 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-public class CustomerService implements ICustomerService {
+public class CustomerService implements ICustomerServiceUseCase {
     private final ICustomerRepository iCustomerRepository;
 
     @Override
@@ -40,11 +42,16 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Optional<CustomerDto> getCustomerByEmail(String email) {
+
         return iCustomerRepository.getCustomerByEmail(email);
     }
 
     @Override
     public ResposeCustomerDto save(CustomerDto newCustomer) {
+        if(!newCustomer.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
+            throw new EmailValidatorExeption();
+        }
         String passwordGenerate = generarRadomPassword(8);
         newCustomer.setPassword(passwordGenerate);
         newCustomer.setActive(1);

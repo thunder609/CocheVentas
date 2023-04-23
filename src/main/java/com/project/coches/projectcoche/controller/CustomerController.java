@@ -2,7 +2,7 @@ package com.project.coches.projectcoche.controller;
 
 import com.project.coches.projectcoche.domain.dto.CustomerDto;
 import com.project.coches.projectcoche.domain.dto.ResposeCustomerDto;
-import com.project.coches.projectcoche.domain.service.ICustomerService;
+import com.project.coches.projectcoche.domain.useCase.ICustomerServiceUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping(path = "/customers")
 
 public class CustomerController {
-   private final ICustomerService iCustomerService;
+   private final ICustomerServiceUseCase iCustomerService;
     @GetMapping
     public ResponseEntity<List<CustomerDto>> getAll() {
         return ResponseEntity.ok(iCustomerService.getAll());
@@ -33,14 +33,14 @@ public class CustomerController {
     }
     @PostMapping
     public ResponseEntity<ResposeCustomerDto>  save(@RequestBody CustomerDto customerDtonew){
-        try {
+      //  try {
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(iCustomerService.save(customerDtonew));
-        }
-        catch(Exception e){
+      //  }
+     //   catch(Exception e){
             //otra manera    return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+      //      return  ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+     //   }
 
     }
     @PatchMapping

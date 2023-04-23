@@ -1,4 +1,4 @@
-package com.project.coches.projectcoche.persistence.repository;
+package com.project.coches.projectcoche.persistence.crud;
 
 import com.project.coches.projectcoche.persistence.entity.CustomerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

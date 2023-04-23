@@ -2,6 +2,7 @@ package com.project.coches.projectcoche.persistence.repository;
 
 import com.project.coches.projectcoche.domain.dto.BrandCarDto;
 import com.project.coches.projectcoche.domain.repository.IBrandCarRepository;
+import com.project.coches.projectcoche.persistence.crud.IBrandCarCrudRepository;
 import com.project.coches.projectcoche.persistence.entity.BrandCarEntity;
 import com.project.coches.projectcoche.persistence.mapper.IBrandCarMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.Optional;
  */
 @RequiredArgsConstructor // crea constructor con los atributos final
 @Repository
-public class BradCarRepository implements IBrandCarRepository {
+public class BrandCarRepository implements IBrandCarRepository {
 
     private final IBrandCarCrudRepository iBrandCarCrudRepository;
 
@@ -64,6 +65,7 @@ public class BradCarRepository implements IBrandCarRepository {
      */
     @Override
     public void delete(Integer idBrandCar) {
+
         iBrandCarCrudRepository.deleteById(idBrandCar);
     }
 }

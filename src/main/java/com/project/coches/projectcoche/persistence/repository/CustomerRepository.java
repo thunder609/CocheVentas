@@ -2,7 +2,7 @@ package com.project.coches.projectcoche.persistence.repository;
 
 import com.project.coches.projectcoche.domain.dto.CustomerDto;
 import com.project.coches.projectcoche.domain.repository.ICustomerRepository;
-import com.project.coches.projectcoche.persistence.entity.CustomerEntity;
+import com.project.coches.projectcoche.persistence.crud.ICustomerCrudRepository;
 import com.project.coches.projectcoche.persistence.mapper.ICustomerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -40,6 +40,7 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public void delete(String cardId) {
-               iCustomerCrudRepository.deleteById(cardId);
+
+        iCustomerCrudRepository.deleteById(cardId);
     }
 }
