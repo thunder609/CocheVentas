@@ -3,6 +3,8 @@ package com.project.coches.projectcoche.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.List;
+import org.hibernate.validator.constraints.time.DurationMin;
 
 @Entity
 @Table (name="cliente")
@@ -26,4 +28,6 @@ public class CustomerEntity {
     private Integer active;
     @Column(name="contrasenia")
     private String password;
+    @OneToMany(mappedBy = "customerEntity")
+    private List<PurchaseEntity> purchaseEntity;
 }

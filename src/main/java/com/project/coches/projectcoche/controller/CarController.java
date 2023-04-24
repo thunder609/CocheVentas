@@ -39,9 +39,14 @@ public class CarController {
     public ResponseEntity<CarDto> getCar(@PathVariable Integer idCar) {
         return ResponseEntity.of(iCarServiceUseCase.getCar(idCar));
     }
+    @GetMapping(path="/price{priceCar}")
+    public ResponseEntity<List<CarDto>> getCarsByPriceLessThan(@PathVariable  Double priceCar){
+        return  ResponseEntity.ok(iCarServiceUseCase.getCarsByPriceLessThan(priceCar));
+    }
     @DeleteMapping(path = "/{idCar}")
     public ResponseEntity<Boolean> delete(@PathVariable Integer idCar) {
         return new ResponseEntity<>(this.iCarServiceUseCase.delete(idCar) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
+
 
 }

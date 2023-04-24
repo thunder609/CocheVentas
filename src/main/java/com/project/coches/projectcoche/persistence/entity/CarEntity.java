@@ -49,6 +49,7 @@ public class CarEntity {
     @ManyToOne
     @JoinColumn(name = "marca_coche_id", insertable = false, updatable = false)
     private BrandCarEntity brandCarEntity;
-
+    @OneToMany(mappedBy = "carEntity")
+    private List<CarPurchaseEntity> carPurchaseEntity;
 
 }
